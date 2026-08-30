@@ -1,0 +1,18 @@
+{
+    "name": "aifeala/aif-web",
+    "description": "website for aifeala",
+    "autoload": {
+        "psr-4": {
+            "Aifeala\\AifWeb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aifeala",
+            "email": "aifeala.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "^1.7"
+    }
+}

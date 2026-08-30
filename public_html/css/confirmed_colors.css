@@ -1,0 +1,33 @@
+:root {
+
+    /*Overall color pallet. Forms a gradient loop*/
+    /*There should be no true gradients, use this as a blocky gradient if needed*/
+    --shadow-grey: #3c3341;
+    --vintage-grape: #504555;
+    --mauve-shadow: #5b444c;
+    --taupe-grey: #655d66;
+    --slate-grey: #6e7680;
+    --slate-grey-2: #778f9a;
+    --cool-steel: #80a8b3;
+    --cerulean: #427d8d;
+    --dark-teal: #035166;
+    --gunmetal: #353746;
+
+    /*Colors for highlights or emphasis*/
+    /*Not part of the gradient loop, but still form their own gradient*/
+    /*But this gradient does not loop*/
+    --peach-glow: #f1bf98;
+    --peach-glow-2: #e9b794;
+    --sandy-clay: #e0af90;
+    --light-bronze: #cf9f88;
+    --light-bronze-2: #ca947a;
+    --toasted-almond: #c4886c;
+    --cinnamon-wood: #bf7d5e;
+    --cinnamon-wood-2: #b97150;
+
+    /*Neutral colors for the site*/
+    --white-smoke: #f6f3f2;
+    --charcoal: #565256;
+    --shadow-grey: #201c22;
+    --onyx: #0b090b;
+}

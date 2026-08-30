@@ -1,0 +1,571 @@
+/* ============================================================
+   LAYER 1 - PALETTE
+   Raw values only. Never use these directly in a component.
+   Each line records the contrast ratio against the three
+   neutrals, and the highest WCAG 2 rating it reaches as text.
+   Key:  AAA = 7.0+   AA = 4.5+   AA-L = 3.0+ (large text only)
+         UI = 3.0+ (borders and icons only)   NO = below 3.0
+   ============================================================ */
+
+:root {
+  /* Loop colors -- against white-smoke / charcoal / onyx */
+  --shadow-grey:     #3c3341ff;  /* 10.92 AAA | 1.57 NO   | 1.65 NO   */
+  --vintage-grape:   #504555ff;  /*  8.19 AAA | 1.18 NO   | 2.20 NO   */
+  --mauve-shadow:    #5b444cff;  /*  8.01 AAA | 1.15 NO   | 2.25 NO   */
+  --taupe-grey:      #655d66ff;  /*  5.74 AA  | 1.21 NO   | 3.13 AA-L */
+  --slate-grey:      #6e7680ff;  /*  4.17 AA-L| 1.67 NO   | 4.32 AA-L */
+  --slate-grey-2:    #778f9aff;  /*  3.08 AA-L| 2.26 NO   | 5.84 AA   */
+  --cool-steel:      #80a8b3ff;  /*  2.33 NO  | 2.98 NO   | 7.72 AAA  */
+  --cerulean:        #427d8dff;  /*  4.18 AA-L| 1.66 NO   | 4.30 AA-L */
+  --dark-teal:       #035166ff;  /*  8.02 AAA | 1.15 NO   | 2.24 NO   */
+  --gunmetal:        #353746ff;  /* 10.65 AAA | 1.53 NO   | 1.69 NO   */
+
+  /* Accent colors -- against white-smoke / charcoal / onyx */
+  --peach-glow:      #f1bf98ff;  /*  1.50 NO  | 4.62 AA   | 11.95 AAA */
+  --peach-glow-2:    #e9b794ff;  /*  1.63 NO  | 4.26 AA-L | 11.02 AAA */
+  --sandy-clay:      #e0af90ff;  /*  1.78 NO  | 3.91 AA-L | 10.12 AAA */
+  --light-bronze:    #cf9f88ff;  /*  2.12 NO  | 3.28 AA-L |  8.48 AAA */
+  --light-bronze-2:  #ca947aff;  /*  2.37 NO  | 2.93 NO   |  7.59 AAA */
+  --toasted-almond:  #c4886cff;  /*  2.68 NO  | 2.59 NO   |  6.70 AA  */
+  --cinnamon-wood:   #bf7d5eff;  /*  3.01 AA-L| 2.31 NO   |  5.96 AA  */
+  --cinnamon-wood-2: #b97150ff;  /*  3.43 AA-L| 2.02 NO   |  5.24 AA  */
+
+  /* Neutrals -- against each other */
+  --white-smoke:     #f6f3f2ff;  /* on charcoal 6.95 AA | on onyx 17.98 AAA */
+  --charcoal:        #565256ff;  /* on onyx      2.59 NO -- do not pair     */
+  --onyx:            #0b090bff;
+
+  --segment-size: 14px;
+}
+
+/* ============================================================
+   LAYER 2 - SEMANTIC ROLES
+   Components read only these. Change a role here and the
+   whole site follows. Dark is the default theme.
+   ============================================================ */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces */
+  --surface-page:      var(--onyx);
+  --surface-raised:    var(--gunmetal);       /* cards and panels        */
+  --surface-raised-2:  var(--shadow-grey);    /* menus and popovers      */
+  --surface-inset:     var(--vintage-grape);  /* wells and code blocks   */
+
+  /* Text -- all values below are measured on --surface-raised,
+     the worst case of the three dark surfaces */
+  --text-primary:      var(--white-smoke);    /* 10.65 AAA */
+  --text-secondary:    var(--peach-glow);     /*  7.08 AAA */
+  --text-muted:        var(--cool-steel);     /*  4.57 AA  */
+  --text-link:         var(--sandy-clay);     /*  5.99 AA  */
+  --text-heading:      var(--white-smoke);    /* 10.65 AAA */
+
+  /* Fills and the text that sits on them */
+  --fill-accent:       var(--peach-glow);
+  --on-fill-accent:    var(--onyx);           /* 11.95 AAA */
+  --fill-quiet:        var(--taupe-grey);
+  --on-fill-quiet:     var(--white-smoke);    /*  5.74 AA  */
+
+  /* Borders. Non-text needs 3.0 against the surface behind it */
+  --border-subtle:     var(--taupe-grey);     /*  1.85 on raised -- decorative only */
+  --border-default:    var(--slate-grey-2);   /*  3.46 on raised -- UI, passes */
+  --border-focus:      var(--peach-glow);     /*  7.08 on raised -- UI, passes */
+}
+
+[data-theme="light"] {
+  --surface-page:      var(--white-smoke);
+  --surface-raised:    color-mix(in srgb, var(--white-smoke) 92%, var(--charcoal));
+  --surface-raised-2:  var(--white-smoke);
+  --surface-inset:     color-mix(in srgb, var(--white-smoke) 86%, var(--charcoal));
+
+  /* Text -- measured on --white-smoke */
+  --text-primary:      var(--onyx);           /* 17.98 AAA */
+  --text-secondary:    var(--charcoal);       /*  6.95 AA  */
+  --text-muted:        var(--taupe-grey);     /*  5.74 AA  */
+  --text-link:         var(--dark-teal);      /*  8.02 AAA */
+  --text-heading:      var(--shadow-grey);    /* 10.92 AAA */
+
+  /* The accent colors are too light for text here. Use them as
+     fills, and put onyx on top. */
+  --fill-accent:       var(--peach-glow);
+  --on-fill-accent:    var(--onyx);           /* 11.95 AAA */
+  --fill-quiet:        var(--slate-grey-2);
+  --on-fill-quiet:     var(--onyx);           /*  5.84 AA  */
+
+  --border-subtle:     var(--slate-grey-2);   /*  3.08 on page -- UI, passes */
+  --border-default:    var(--slate-grey);     /*  4.17 on page -- UI, passes */
+  --border-focus:      var(--dark-teal);      /*  8.02 on page -- UI, passes */
+}
+
+/* ============================================================
+   LAYER 3 - RULES THAT THE NUMBERS DO NOT SHOW
+   ------------------------------------------------------------
+   1. --charcoal is a mid tone. Only --peach-glow reaches AA on
+      it. Never use --charcoal behind body text.
+   2. --cool-steel, --slate-grey-2, --cerulean and --slate-grey
+      fail on --white-smoke for normal text. Use them at 24px,
+      or at 19px bold, or as fills only.
+   3. --text-muted fails on --surface-inset in the dark theme.
+      Cool-steel on vintage-grape gives 3.52. Use --text-primary
+      or --text-secondary inside a well or a code block.
+   4. The palette has no red, green or yellow. Error, success
+      and warning states need three more colors. Do not use
+      --cinnamon-wood-2 for errors. Users read it as a brand
+      color, not as a warning.
+   5. Color must never be the only signal. Add an icon or a
+      text label to every state.
+   6. Test any color-mix() surface again after you change it.
+      The mix changes the ratio.
+   ============================================================ */
+
+/* ── Page chrome: a boxed page sitting on a plain, slightly
+   recessed backdrop -- the old "site inside a container" layout,
+   without anything that clips or blocks page scrolling. ───────── */
+
+/* Hard color-stops (each color repeated at the same position) instead
+   of interpolated ones -- blocky swaps between the Loop sequence,
+   not a blend. */
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+    background-color: var(--surface-inset);
+    background-image: linear-gradient(
+        160deg,
+        var(--shadow-grey) 0% 10%,
+        var(--vintage-grape) 10% 20%,
+        var(--mauve-shadow) 20% 30%,
+        var(--taupe-grey) 30% 40%,
+        var(--slate-grey) 40% 50%,
+        var(--slate-grey-2) 50% 60%,
+        var(--cool-steel) 60% 70%,
+        var(--cerulean) 70% 80%,
+        var(--dark-teal) 80% 90%,
+        var(--gunmetal) 90% 100%
+    );
+    background-attachment: fixed;
+}
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+}
+
+body {
+    font-family: 'Philosopher', sans-serif;
+    background-color: var(--surface-page);
+    color: var(--text-primary);
+    font-size: 1rem;
+    max-width: 960px;
+    margin: 2rem auto;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 20px 45px rgba(11, 9, 11, 0.35);
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.brand {
+    font-family: 'Black Ops One', sans-serif;
+    color: var(--text-heading);
+    letter-spacing: 0.02em;
+}
+
+/* ── Header: scoped to the dark theme so its text tokens stay
+   correct against a dark surface, then given a row of solid Loop-
+   colored blocks -- hard swaps between the sequence, no blending. ── */
+
+.top-bar {
+    background-image: linear-gradient(
+        90deg,
+        var(--shadow-grey) 0% 11.11%,
+        var(--vintage-grape) 11.11% 22.22%,
+        var(--mauve-shadow) 22.22% 33.33%,
+        var(--taupe-grey) 33.33% 44.44%,
+        var(--slate-grey) 44.44% 55.55%,
+        var(--slate-grey-2) 55.55% 66.66%,
+        var(--cool-steel) 66.66% 77.77%,
+        var(--cerulean) 77.77% 88.88%,
+        var(--dark-teal) 88.88% 100%
+    );
+    border-bottom: 3px solid var(--gunmetal);
+    color: var(--text-primary);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem 2rem 0;
+    text-shadow: 0 1px 3px rgba(11, 9, 11, 0.55);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: 1 1 100%;
+    padding-bottom: 1rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.top-bar p {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav {
+    flex: 1 1 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--on-fill-quiet);
+    background-color: var(--fill-quiet);
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--border-default);
+    border-bottom: none;
+    border-right: none;
+}
+
+nav li:last-child a {
+    border-right: 1px solid var(--border-default);
+}
+
+nav a:hover {
+    color: var(--on-fill-accent);
+    background-color: var(--fill-accent);
+}
+
+nav a.is-active {
+    /* The header is dark-scoped for its gradient banner, so
+       var(--surface-page) here would resolve to the dark theme's
+       onyx. This tab has to match the *actual* light page behind
+       it instead, to look welded on -- hence the direct neutral. */
+    color: var(--onyx);
+    background-color: var(--white-smoke);
+    text-shadow: none;
+    position: relative;
+    top: 1px;
+}
+
+main {
+    padding: 2rem;
+    background-color: var(--surface-page);
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.flex-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 1.5rem;
+    overflow-x: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-primary);
+}
+
+.hero .brand {
+    color: var(--text-heading);
+}
+
+/* ── Flat, rectangular buttons -- no gloss, no gradients. ───── */
+
+.cta-button {
+    margin-top: 1rem;
+    background-color: var(--fill-accent);
+    color: var(--on-fill-accent);
+    padding: 0.6rem 1.3rem;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 1.1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:hover {
+    filter: brightness(0.94);
+}
+
+.cta-button:active {
+    box-shadow: none;
+}
+
+.cta-button-alt {
+    margin-left: 10px;
+    background-color: var(--fill-quiet);
+    color: var(--on-fill-quiet);
+}
+
+.cta-button-alt:hover {
+    filter: brightness(0.92);
+}
+
+.quick-links {
+    background-color: var(--surface-page);
+    padding: 1.5rem 1rem 2rem;
+}
+
+/* ── Cards styled like plain widget boxes: a flat title
+   bar and a flat body, minimal shadow. ─────────────────────── */
+
+.card {
+    flex: 1 1 0;
+    background-color: var(--surface-raised);
+    color: var(--text-primary);
+    padding: 1.25rem 1rem;
+    border: 1px solid var(--border-default);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    min-width: 0;
+}
+
+.card-button {
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card h4 {
+    color: var(--text-heading);
+    font-size: 1.15rem;
+    margin: -1.25rem -1rem 1rem;
+    padding: 0.55rem 1rem;
+    background-color: var(--surface-raised-2);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card:hover h4 {
+    background-color: var(--fill-quiet);
+    color: var(--on-fill-quiet);
+}
+
+/* ── Footer: dark-scoped bookend to the header, using two Loop
+   colors as a calmer, hard-split echo of the header's blocks. ── */
+
+footer {
+    background-image: linear-gradient(90deg, var(--gunmetal) 0% 50%, var(--vintage-grape) 50% 100%);
+    border-top: 3px solid var(--gunmetal);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1.25rem 1rem;
+}
+
+footer .brand {
+    color: var(--text-heading);
+}
+
+/* ── Toast ──────────────────────────────────── */
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--fill-quiet);
+    color: var(--on-fill-quiet);
+    padding: 0.85rem 1.2rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-default);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Blog article layout ───────────────────── */
+
+article {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+article p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+article h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--text-heading);
+}
+
+article hr {
+    border: none;
+    border-top: 1px solid var(--border-default);
+    margin: 2rem 0;
+}
+
+article a {
+    color: var(--text-link);
+}
+
+/* ── Tag links, plain and underlined like a classic blog byline ── */
+
+article p a[href*="tag="],
+.pagination a {
+    display: inline-block;
+    text-decoration: underline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--text-link);
+    margin: 0.1rem 0.3rem 0.1rem 0;
+}
+
+article p a[href*="tag="]:hover,
+.pagination a:hover {
+    color: var(--text-heading);
+}
+
+/* ── Figures and images ─────────────────────── */
+
+article figure {
+    margin: 1.5rem 0;
+}
+
+article figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+article figcaption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    font-style: italic;
+}
+
+/* ── Inline asides (sup/sub used as footnotes) */
+
+article sup,
+article sub {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+article p > sup,
+article p > sub {
+    display: inline;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    vertical-align: baseline;
+}
+
+/* ── Iframe embeds ──────────────────────────── */
+
+article iframe {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: none;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+/* ── Pagination ─────────────────────────────── */
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.pagination span {
+    padding: 0 0.5rem;
+}
+
+/* ── Carousel centering ─────────────────────── */
+
+.carousel-container {
+    margin: 2rem auto;
+}
+
+@media (max-width: 768px) {
+    body {
+        border-left: none;
+        border-right: none;
+        box-shadow: none;
+    }
+
+    .top-bar {
+        text-align: center;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav a {
+        display: block;
+        border-right: 1px solid var(--border-default);
+        border-bottom: 1px solid var(--border-default);
+    }
+
+    nav a.is-active {
+        top: 0;
+    }
+
+    .hero, .quick-links, .container {
+        padding: 1rem;
+    }
+}
