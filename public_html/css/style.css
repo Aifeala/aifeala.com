@@ -1,3 +1,10 @@
+
+@font-face {
+  font-family: 'Departure';
+  src: url('fonts/DepartureMono/DepartureMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 /* ============================================================
    LAYER 1 - PALETTE
    Raw values only. Never use these directly in a component.
@@ -83,7 +90,7 @@
   --text-secondary:    var(--charcoal);       /*  6.95 AA  */
   --text-muted:        var(--taupe-grey);     /*  5.74 AA  */
   --text-link:         var(--dark-teal);      /*  8.02 AAA */
-  --text-heading:      var(--shadow-grey);    /* 10.92 AAA */
+  --text-heading:      var(--mauve-shadow);    /* 8.01 AAA */
 
   /* The accent colors are too light for text here. Use them as
      fills, and put onyx on top. */
@@ -117,6 +124,9 @@
    6. Test any color-mix() surface again after you change it.
       The mix changes the ratio.
    ============================================================ */
+
+
+   
 
 /* ── Page chrome: a boxed page sitting on a plain, slightly
    recessed backdrop -- the old "site inside a container" layout,
@@ -164,12 +174,12 @@ body {
 h1, h2, h3, h4 {
     line-height: 1.2;
     margin-bottom: 0.5rem;
+    font-family: 'Departure', sans-serif;
 }
 
 .brand {
-    font-family: 'Black Ops One', sans-serif;
+    font-family: 'Departure', sans-serif;
     color: var(--text-heading);
-    letter-spacing: 0.02em;
 }
 
 /* ── Header: scoped to the dark theme so its text tokens stay
@@ -184,10 +194,10 @@ h1, h2, h3, h4 {
         var(--mauve-shadow) 22.22% 33.33%,
         var(--taupe-grey) 33.33% 44.44%,
         var(--slate-grey) 44.44% 55.55%,
-        var(--slate-grey-2) 55.55% 66.66%,
-        var(--cool-steel) 66.66% 77.77%,
-        var(--cerulean) 77.77% 88.88%,
-        var(--dark-teal) 88.88% 100%
+        var(--taupe-grey) 55.55% 66.66%,
+        var(--mauve-shadow) 66.66% 77.77%,
+        var(--vintage-grape) 77.77% 88.88%,
+        var(--shadow-grey) 88.88% 100%
     );
     border-bottom: 3px solid var(--gunmetal);
     color: var(--text-primary);
@@ -204,6 +214,7 @@ h1, h2, h3, h4 {
     gap: 0.6rem;
     flex: 1 1 100%;
     padding-bottom: 1rem;
+    font-family: 'Departure', sans-serif;
 }
 
 .logo-icon {
@@ -212,22 +223,35 @@ h1, h2, h3, h4 {
     flex-shrink: 0;
 }
 
+.tagline {
+    font-family: 'Departure', sans-serif;
+
+}
+
 .top-bar p {
     margin: 0.2rem 0 0 0;
     font-size: 0.95rem;
     color: var(--text-secondary);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Departure', sans-serif;
 }
-
 nav {
     flex: 1 1 100%;
 }
 
 nav ul {
     list-style: none;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;       /* Arranges items horizontally in one row */
+    grid-auto-columns: 1fr;       /* Forces all column widths to match the widest item */
+    grid-auto-rows: 1fr;          /* Forces all row heights to match the tallest item */
+    width: max-content;           /* Sizes the menu to the minimum space needed */
     margin: 0;
     padding: 0;
+}
+
+nav li {
+    display: flex;                /* Lets the anchor fill the entire cell */
+    font-family: 'Departure', sans-serif;
 }
 
 nav a {
@@ -235,11 +259,16 @@ nav a {
     color: var(--on-fill-quiet);
     background-color: var(--fill-quiet);
     font-weight: bold;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;                  /* Fills full width of the matched grid column */
     padding: 0.6rem 1.1rem;
     border: 1px solid var(--border-default);
     border-bottom: none;
     border-right: none;
+    box-sizing: border-box;
 }
 
 nav li:last-child a {
@@ -291,6 +320,7 @@ main {
 
 .hero .brand {
     color: var(--text-heading);
+    color: var()
 }
 
 /* ── Flat, rectangular buttons -- no gloss, no gradients. ───── */
@@ -309,6 +339,7 @@ main {
     font-family: 'Philosopher', sans-serif;
     font-size: 1.1rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    font-family: 'Departure', sans-serif;
 }
 
 .cta-button:hover {

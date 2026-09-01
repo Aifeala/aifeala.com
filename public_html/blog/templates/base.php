@@ -18,10 +18,10 @@
   <header data-theme="dark">
     <div class="top-bar">
       <div class="logo">
-        <img src="/images/isopod.svg" alt="" class="logo-icon" />
+        <img src="/images/rolypoly_icon.svg" alt="" class="logo-icon" />
         <div style="display: inline-block;">
           <h1 class="brand">Aifeala</h1>
-          <p>My long thoughts.</p>
+          <p class="tagline">My long thoughts.</p>
         </div>
       </div>
       <nav class="site-nav">
