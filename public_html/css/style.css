@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Departure';
   src: url('fonts/DepartureMono/DepartureMono-Regular.otf') format('opentype');
@@ -171,7 +170,7 @@ body {
     box-shadow: 0 20px 45px rgba(11, 9, 11, 0.35);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     margin-bottom: 0.5rem;
     font-family: 'Departure', sans-serif;
@@ -458,6 +457,22 @@ article h3 {
     font-size: 1.3rem;
     color: var(--text-heading);
 }
+article h4 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--gunmetal);
+}
+
+article h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--dark-teal);
+}
+
+
+
 
 article hr {
     border: none;
