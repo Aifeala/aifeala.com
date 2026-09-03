@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <!-- Modern browsers prefer SVG -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+    <!-- Fallback for legacy browsers and taskbars -->
+    <link rel="icon" href="images/favicon.ico" sizes="any">
 </head>
 <body data-page="blog">
   <header data-theme="dark">
