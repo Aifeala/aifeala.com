@@ -13,15 +13,20 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <!-- Modern browsers prefer SVG -->
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+    <!-- Fallback for legacy browsers and taskbars -->
+    <link rel="icon" href="/images/favicon.ico" sizes="any">
 </head>
 <body data-page="blog">
   <header data-theme="dark">
     <div class="top-bar">
       <div class="logo">
-        <img src="/images/isopod.svg" alt="" class="logo-icon" />
+        <img src="/images/rolypoly_icon.svg" alt="" class="logo-icon" />
         <div style="display: inline-block;">
           <h1 class="brand">Aifeala</h1>
-          <p>My long thoughts.</p>
+          <p class="tagline">My long thoughts.</p>
         </div>
       </div>
       <nav class="site-nav">
