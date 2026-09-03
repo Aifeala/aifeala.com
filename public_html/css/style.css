@@ -460,14 +460,11 @@ article h3 {
 article h4 {
     margin-top: 2.5rem;
     margin-bottom: 0.75rem;
-    font-size: 1.3rem;
+
     color: var(--gunmetal);
 }
 
 article h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem;
     color: var(--dark-teal);
 }
 
