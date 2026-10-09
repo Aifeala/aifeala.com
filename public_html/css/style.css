@@ -405,6 +405,13 @@ main {
     line-height: 1.5;
 }
 
+.card li {
+    color: var(--text-muted);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
 .card:hover h4 {
     background-color: var(--fill-quiet);
     color: var(--on-fill-quiet);
